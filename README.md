@@ -8,7 +8,7 @@ Auxiliará o usuário a preencher os formulários e buscar formulários em pdf, 
 Neste projeto será utilizado Framework Angular ou REACT + java spring boot, também contará com um banco não relacional mongoDB;
 
 # Contribuidores
-Luiz Eduardo Gambeti
-Matheus Simões
-Lucas Coelho
-Guilherme GAmbeti
+- Luiz Eduardo Gambeti
+- Matheus Simões
+- Lucas Coelho
+- Guilherme Gambeti
