@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login-cadastro',
-  templateUrl: './login-cadastro.component.html',
-  styleUrls: ['./login-cadastro.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class LoginCadastroComponent {
+export class DashboardComponent {
   constructor(private router: Router) {}
 
   public onFormSubmit(): void {
@@ -16,6 +16,7 @@ export class LoginCadastroComponent {
     // TODO: Validate the user's credentials here
 
     // After validation, navigate to the dashboard
-    this.router.navigate(['/dashboard'], { onSameUrlNavigation: 'reload' });
+    this.router.navigate(['cadastro/relatorio'], { onSameUrlNavigation: 'reload' });
   }
+
 }
