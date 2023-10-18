@@ -7,6 +7,16 @@ import { LoginCadastroComponent } from './login/login-cadastro/login-cadastro.co
 import { LoginFormComponent } from './login/login-form/login-form/login-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CadastroRelatorioTelaComponent } from './cadastro-relatorio-tela/cadastro-relatorio-tela.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NzButtonModule} from "ng-zorro-antd/button";
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -18,9 +28,15 @@ import { CadastroRelatorioTelaComponent } from './cadastro-relatorio-tela/cadast
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NzButtonModule
   ],
-  providers: [],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

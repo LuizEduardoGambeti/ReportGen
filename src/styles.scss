@@ -1,6 +1,8 @@
 // Functions first
 @import "../node_modules/bootstrap/scss/functions";
-
+@import "node_modules/ng-zorro-antd/ng-zorro-antd.dark.css";
+@import "node_modules/ng-zorro-antd/style/index.min.css"; /* Import base styles */
+@import "node_modules/ng-zorro-antd/style/index.min.css";
 // Variable overrides second
 $primary: #900;
 $enable-shadows: true;
