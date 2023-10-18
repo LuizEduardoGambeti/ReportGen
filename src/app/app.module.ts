@@ -15,6 +15,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NzButtonModule} from "ng-zorro-antd/button";
+import {NzLayoutModule} from "ng-zorro-antd/layout";
+import {NzMenuModule} from "ng-zorro-antd/menu";
+import {NzBreadCrumbModule} from "ng-zorro-antd/breadcrumb";
+import {NzCollapseModule} from "ng-zorro-antd/collapse";
+import {NzIconModule} from "ng-zorro-antd/icon";
+import {NzSpaceModule} from "ng-zorro-antd/space";
+import {NzInputModule} from "ng-zorro-antd/input";
+import { CollapseCadastroItensComponent } from './collapse-cadastro-itens/collapse-cadastro-itens.component';
+import { LayoutFormaterComponent } from './layout-formater/layout-formater.component';
 
 registerLocaleData(en);
 
@@ -24,7 +33,9 @@ registerLocaleData(en);
     LoginCadastroComponent,
     LoginFormComponent,
     DashboardComponent,
-    CadastroRelatorioTelaComponent
+    CadastroRelatorioTelaComponent,
+    CollapseCadastroItensComponent,
+    LayoutFormaterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +43,14 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzButtonModule
+    NzButtonModule,
+    NzLayoutModule,
+    NzMenuModule,
+    NzBreadCrumbModule,
+    NzCollapseModule,
+    NzIconModule,
+    NzSpaceModule,
+    NzInputModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
