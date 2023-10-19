@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NzButtonSize} from "ng-zorro-antd/button";
 
 @Component({
   selector: 'app-cadastro-relatorio-tela',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastro-relatorio-tela.component.scss']
 })
 export class CadastroRelatorioTelaComponent {
+  size: NzButtonSize = 'large';
+
 }
