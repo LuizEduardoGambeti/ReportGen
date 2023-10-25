@@ -1,23 +1,22 @@
 <nz-layout>
-  <nz-header>
-    <div class="logo"></div>
-    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-      <li nz-menu-item>nav 1</li>
-      <li nz-menu-item nzSelected>nav 2</li>
-      <li nz-menu-item>nav 3</li>
-    </ul>
-  </nz-header>
   <nz-content class="outer-content">
     <nz-breadcrumb>
       <nz-breadcrumb-item>Home</nz-breadcrumb-item>
       <nz-breadcrumb-item>List</nz-breadcrumb-item>
       <nz-breadcrumb-item>App</nz-breadcrumb-item>
     </nz-breadcrumb>
-    <nz-layout  class="inner-layout">
+
+    <nz-layout class="inner-layout">
+      <!-- Sider Esquerdo (para projetar conteúdo) -->
       <nz-sider nzWidth="500px" nzTheme="light">
-      <ng-content></ng-content>
+        <ng-content select="[left-content]"></ng-content>
       </nz-sider>
-      <nz-content class="inner-content">Content</nz-content>
+
+      <!-- Conteúdo Central -->
+      <nz-content class="inner-content">
+        <!-- Conteúdo projetado para o lado direito -->
+        <ng-content select="[right-content]"></ng-content>
+      </nz-content>
     </nz-layout>
   </nz-content>
 </nz-layout>

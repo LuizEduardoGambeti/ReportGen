@@ -3,14 +3,12 @@
     [nzHeader]="title"
     [nzActive]="active"
     [ngStyle]="customStyle"
-    [nzExpandedIcon]="expandedIconTemplate"
-  >
+    [nzExpandedIcon]="expandedIconTemplate">
     <ng-content></ng-content>
-
-      <ng-template  #expandedIconTemplate let-active>
-        <div class="icons-list">
-          <span nz-icon [nzType]="icon" ></span>
-        </div>
-      </ng-template>
+    <ng-template #expandedIconTemplate let-active>
+      <div class="icons-list d-flex align-items-center ">
+        <span nz-icon class="d-flex " [nzType]="icon"></span>
+      </div>
+    </ng-template>
   </nz-collapse-panel>
 </nz-collapse>

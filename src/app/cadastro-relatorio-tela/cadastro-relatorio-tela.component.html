@@ -1,10 +1,77 @@
 <app-layout-formater>
-  <app-collapse-cadastro-itens [icon]="'double-right'" [title]="'teste'" [active]="true">
-    <nz-input-group>
-      <input type="text" nz-input placeholder="input with clear icon" />
-    </nz-input-group>
-  </app-collapse-cadastro-itens>
-  <div class="d-flex col-12 ml-5">
-    <button nz-button nzType="primary" nzShape="round" nzBlock>Primary</button>
+  <div left-content>
+    <app-collapse-cadastro-itens *ngFor="let item of items" [icon]="'double-right'" [title]="'teste'" [active]="true">
+      <nz-input-group>
+        <input [(ngModel)]="textInput" (keyup)="updatePreview()" placeholder="Digite algo para o PDF..." type="text" nz-input />
+      </nz-input-group>
+      <button nz-button class="mt-2" nzType="primary" (click)="deleteItem(item.id)">Deletar</button>
+    </app-collapse-cadastro-itens>
+    <!--  BTN do menu -->
+    <div class="d-flex col-12 ml-5">
+      <button nz-button nzType="primary" (click)="showModal()" nzShape="round" nzBlock>Adicionar item</button>
+    </div>
+    <!--  modal -->
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <ng-container *nzModalContent>
+        <nz-card>
+          <div nz-card-grid (click)="addNewItem()" [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+          <div nz-card-grid (click)="addNewItem()" [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+          <div nz-card-grid (click)="addNewItem()" [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+          <div nz-card-grid (click)="addNewItem()" [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+          <div nz-card-grid [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+          <div nz-card-grid [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+          <div nz-card-grid [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+          <div nz-card-grid [ngStyle]="gridStyle">
+            <div class="icons-list d-flex align-items-center">
+              <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+              <p class="m-0">teste</p>
+            </div>
+          </div>
+
+        </nz-card>
+      </ng-container>
+    </nz-modal>
   </div>
+  <div right-content>
+    <div class="preview-area">
+      {{ previewContent }}
+    </div>
+    <button (click)="generatePDF()">Gerar PDF</button>
+  </div>
+
 </app-layout-formater>

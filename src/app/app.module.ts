@@ -24,7 +24,9 @@ import {NzSpaceModule} from "ng-zorro-antd/space";
 import {NzInputModule} from "ng-zorro-antd/input";
 import { CollapseCadastroItensComponent } from './collapse-cadastro-itens/collapse-cadastro-itens.component';
 import { LayoutFormaterComponent } from './layout-formater/layout-formater.component';
-import { ModalSelectItemsComponent } from './modal-select-items/modal-select-items.component';
+import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzCardModule} from "ng-zorro-antd/card";
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 registerLocaleData(en);
 
@@ -37,7 +39,6 @@ registerLocaleData(en);
     CadastroRelatorioTelaComponent,
     CollapseCadastroItensComponent,
     LayoutFormaterComponent,
-    ModalSelectItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +53,10 @@ registerLocaleData(en);
     NzCollapseModule,
     NzIconModule,
     NzSpaceModule,
-    NzInputModule
+    NzInputModule,
+    NzModalModule,
+    NzCardModule,
+    NzDividerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
