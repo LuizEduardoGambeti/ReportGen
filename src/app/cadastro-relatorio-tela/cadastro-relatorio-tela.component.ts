@@ -3,6 +3,7 @@ import {v4 as uuidv4} from 'uuid';
 import {PdfGeneratorService} from "./pdf-gen/pdf-generator.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-cadastro-relatorio-tela',
@@ -18,14 +19,6 @@ export class CadastroRelatorioTelaComponent {
   previewContent: string = '';
 
   constructor(private pdfService: PdfGeneratorService) {
-  }
-  generatePDF() {
-    const documentDefinition = {
-      content: [
-         'teste'
-      ]
-    };
-    pdfMake.createPdf(documentDefinition).open();
   }
   updatePreview() {
     this.previewContent = this.textInput;
@@ -59,4 +52,13 @@ export class CadastroRelatorioTelaComponent {
     console.log('Button cancel clicked!');
     this.isVisible = false;
   }
+  generatePDF() {
+    const documentDefinition = {
+      content: [
+        this.previewContent
+      ]
+    };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+  
 }
