@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-collapse-cadastro-itens',
@@ -6,43 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./collapse-cadastro-itens.component.scss']
 })
 export class CollapseCadastroItensComponent {
-  panels = [
-    {
-      active: false,
-      disabled: true,
-      name: 'Nome do relatório',
-      icon: 'double-right',
-      customStyle: {
-        background: '#f7f7f7',
-        'border-radius': '4px',
-        'margin-bottom': '24px',
-        border: '0px'
-      }
-    },
-    {
-      active: false,
-      disabled: true,
-      name: 'This is panel header 2',
-      icon: 'double-right',
-      customStyle: {
-        background: '#f7f7f7',
-        'border-radius': '4px',
-        'margin-bottom': '24px',
-        border: '0px'
-      }
-    },
-    {
-      active: false,
-      disabled: false,
-      name: 'This is panel header 3',
-      icon: 'double-right',
-      customStyle: {
-        background: '#f7f7f7',
-        'border-radius': '4px',
-        'margin-bottom': '24px',
-        border: '0px'
-      }
-    }
-  ];
+  @Input() title: string = '';       // Título do painel
+  @Input() icon: string = '';  // Ícone do painel
+  @Input() active: boolean = false;  // Estado ativo do painel
 
+  customStyle = {
+    icon: this.icon,
+    background: '#f7f7f7',
+    'border-radius': '4px',
+    'margin-bottom': '24px',
+    'padding-right': '10px',
+    border: '0px'
+  };
 }

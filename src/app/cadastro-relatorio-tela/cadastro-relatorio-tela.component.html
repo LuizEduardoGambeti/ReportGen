@@ -1,6 +1,10 @@
 <app-layout-formater>
-<app-collapse-cadastro-itens></app-collapse-cadastro-itens>
-  <button nz-button nzType="primary" [nzSize]="size" nzShape="round">
-    Download
-  </button>
+  <app-collapse-cadastro-itens [icon]="'double-right'" [title]="'teste'" [active]="true">
+    <nz-input-group>
+      <input type="text" nz-input placeholder="input with clear icon" />
+    </nz-input-group>
+  </app-collapse-cadastro-itens>
+  <div class="d-flex col-12 ml-5">
+    <button nz-button nzType="primary" nzShape="round" nzBlock>Primary</button>
+  </div>
 </app-layout-formater>

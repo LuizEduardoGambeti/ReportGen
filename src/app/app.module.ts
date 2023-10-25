@@ -24,6 +24,7 @@ import {NzSpaceModule} from "ng-zorro-antd/space";
 import {NzInputModule} from "ng-zorro-antd/input";
 import { CollapseCadastroItensComponent } from './collapse-cadastro-itens/collapse-cadastro-itens.component';
 import { LayoutFormaterComponent } from './layout-formater/layout-formater.component';
+import { ModalSelectItemsComponent } from './modal-select-items/modal-select-items.component';
 
 registerLocaleData(en);
 
@@ -35,7 +36,8 @@ registerLocaleData(en);
     DashboardComponent,
     CadastroRelatorioTelaComponent,
     CollapseCadastroItensComponent,
-    LayoutFormaterComponent
+    LayoutFormaterComponent,
+    ModalSelectItemsComponent
   ],
   imports: [
     BrowserModule,

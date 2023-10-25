@@ -7,6 +7,5 @@ import {NzButtonSize} from "ng-zorro-antd/button";
   styleUrls: ['./cadastro-relatorio-tela.component.scss']
 })
 export class CadastroRelatorioTelaComponent {
-  size: NzButtonSize = 'large';
 
 }
