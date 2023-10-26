@@ -1,5 +1,6 @@
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 import { Injectable } from '@angular/core';
 @Injectable({
@@ -10,26 +11,25 @@ export class PdfGeneratorService {
 
   constructor() { }
 
-  generatePDF(data: any): void {
-    const documentDefinition = this.getDocumentDefinition(data);
+  generatePDF(previewContent: string): void {
+    const documentDefinition = this.getDocumentDefinition(previewContent);
     pdfMake.createPdf(documentDefinition).open();
   }
 
-  private getDocumentDefinition(data: any): any {
+  private getDocumentDefinition(previewContent: string): any {
     return {
       content: [
-        // Adicione aqui o conteúdo do seu PDF, usando a variável data como entrada
-        // Por exemplo:
         { text: 'Relatório', style: 'header' },
-        { text: data.inputContent }
+        { text: previewContent }
       ],
       styles: {
         header: {
           fontSize: 18,
           bold: true,
           margin: [0, 0, 0, 10]
-        },
-        // Adicione mais estilos conforme necessário
+        }
       }
     };
-  }}
+  }
+
+}

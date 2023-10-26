@@ -27,6 +27,10 @@ import { LayoutFormaterComponent } from './layout-formater/layout-formater.compo
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NzRadioModule} from "ng-zorro-antd/radio";
+import {NzInputNumberModule} from "ng-zorro-antd/input-number";
+import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
+import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 
 registerLocaleData(en);
 
@@ -56,7 +60,11 @@ registerLocaleData(en);
     NzInputModule,
     NzModalModule,
     NzCardModule,
-    NzDividerModule
+    NzDividerModule,
+    NzRadioModule,
+    NzInputNumberModule,
+    NzDatePickerModule,
+    NzDropDownModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

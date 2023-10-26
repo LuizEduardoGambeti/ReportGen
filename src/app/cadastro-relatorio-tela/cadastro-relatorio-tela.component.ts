@@ -3,6 +3,8 @@ import {v4 as uuidv4} from 'uuid';
 import {PdfGeneratorService} from "./pdf-gen/pdf-generator.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {NzPlacementType} from "ng-zorro-antd/dropdown";
+
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -11,21 +13,21 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
   styleUrls: ['./cadastro-relatorio-tela.component.scss']
 })
 export class CadastroRelatorioTelaComponent {
-  public items: any[] = [];
+  public items: { id: string, type: string, value?: any }[] = [];
   public isVisible = false;
-  public inputData: string = '';
   @Input() icon: string = '';  // Ícone do painel
-  textInput: string = '';
   previewContent: string = '';
 
   constructor(private pdfService: PdfGeneratorService) {
   }
-  updatePreview() {
-    this.previewContent = this.textInput;
+
+  public updatePreview() {
+    this.previewContent = this.items.map(item => item.value).join(' ');
   }
 
-  public addNewItem() {
-    this.items.push({id: uuidv4()});
+
+  public addNewItem(type: string) {
+    this.items.push({ id: uuidv4(), type: type });
     this.isVisible = false;
   }
 
@@ -52,13 +54,9 @@ export class CadastroRelatorioTelaComponent {
     console.log('Button cancel clicked!');
     this.isVisible = false;
   }
-  generatePDF() {
-    const documentDefinition = {
-      content: [
-        this.previewContent
-      ]
-    };
-    pdfMake.createPdf(documentDefinition).open();
+
+  public generatePDF(): void {
+    this.pdfService.generatePDF(this.previewContent);
   }
-  
+
 }
