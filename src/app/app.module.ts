@@ -31,6 +31,17 @@ import {NzRadioModule} from "ng-zorro-antd/radio";
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzDropDownModule} from "ng-zorro-antd/dropdown";
+import { DynamicInputComponent } from './dynamics-components/dynamic-input/dynamic-input.component';
+import { DynamicDatePickerComponent } from './dynamics-components/dynamic-date-picker/dynamic-date-picker.component';
+import { DynamicUploadComponent } from './dynamics-components/dynamic-upload/dynamic-upload.component';
+import { DynamicDropdownComponent } from './dynamics-components/dynamic-dropdown/dynamic-dropdown.component';
+import { DynamicInputNumberComponent } from './dynamics-components/dynamic-input-number/dynamic-input-number.component';
+import { DynamicRadioButtonComponent } from './dynamics-components/dynamic-radio-button/dynamic-radio-button.component';
+import { AnchorDirective } from './dynamics-components/anchor/anchor.directive';
+import { DynamicContainerComponent } from './dynamics-components/dynamic-container/dynamic-container.component';
+import {NzSelectModule} from "ng-zorro-antd/select";
+import {NzUploadModule} from "ng-zorro-antd/upload";
+import { DynamicCardComponent } from './dynamics-components/dynamic-card/dynamic-card.component';
 
 registerLocaleData(en);
 
@@ -43,6 +54,15 @@ registerLocaleData(en);
     CadastroRelatorioTelaComponent,
     CollapseCadastroItensComponent,
     LayoutFormaterComponent,
+    DynamicInputComponent,
+    DynamicDatePickerComponent,
+    DynamicUploadComponent,
+    DynamicDropdownComponent,
+    DynamicInputNumberComponent,
+    DynamicRadioButtonComponent,
+    AnchorDirective,
+    DynamicContainerComponent,
+    DynamicCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +84,9 @@ registerLocaleData(en);
     NzRadioModule,
     NzInputNumberModule,
     NzDatePickerModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzSelectModule,
+    NzUploadModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

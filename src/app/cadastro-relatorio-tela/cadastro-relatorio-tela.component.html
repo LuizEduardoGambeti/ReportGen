@@ -1,37 +1,9 @@
 <app-layout-formater>
   <div left-content>
+    <app-dynamic-container [componentType]="'radioButton'"></app-dynamic-container>
+
     <app-collapse-cadastro-itens *ngFor="let item of items" [icon]="'double-right'" [title]="'teste'" [active]="true">
-      <!-- Input padrão -->
-      <div *ngIf="item.type === 'input'">
-        <nz-input-group>
-          <input [(ngModel)]="item.value" (keyup)="updatePreview()" placeholder="Digite algo para o PDF..." type="text"
-                 nz-input/>
-        </nz-input-group>
-      </div>
 
-      <!-- Date Picker -->
-      <div *ngIf="item.type === 'datePicker'">
-        <nz-date-picker [(ngModel)]="item.value" (ngModelChange)="updatePreview()"></nz-date-picker>
-      </div>
-
-      <!-- Dropdown -->
-      <div *ngIf="item.type === 'dropdown'">
-      </div>
-
-      <!-- Input Number -->
-      <div *ngIf="item.type === 'inputNumber'">
-        <nz-input-number [(ngModel)]="item.value" (ngModelChange)="updatePreview()"></nz-input-number>
-      </div>
-
-      <!-- Input Number -->
-
-      <div *ngIf="item.type === 'radioButton'">
-        <nz-radio-group [(ngModel)]="item.value" (ngModelChange)="updatePreview()">
-          <label nz-radio nzValue="option1">Option 1</label>
-          <label nz-radio nzValue="option2">Option 2</label>
-          <!-- Adicione mais opções conforme necessário -->
-        </nz-radio-group>
-      </div>
       <button nz-button class="mt-2" nzType="primary" (click)="deleteItem(item.id)">Deletar</button>
     </app-collapse-cadastro-itens>
     <!--  BTN do menu -->
@@ -41,72 +13,7 @@
     <!--  modal -->
     <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
       <ng-container *nzModalContent>
-        <nz-card>
-          <!-- Radio Button -->
-          <div nz-card-grid (click)="addNewItem('radioButton')" [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="dot-chart" nzTheme="outline"></span>
-              <p class="m-0">Radio Button</p>
-            </div>
-          </div>
-
-          <!-- Text Input -->
-          <div nz-card-grid (click)="addNewItem('input')" [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="edit" nzTheme="outline"></span>
-              <p class="m-0">Text Input</p>
-            </div>
-          </div>
-
-          <!-- Date Picker -->
-          <div nz-card-grid (click)="addNewItem('datePicker')" [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="calendar" nzTheme="outline"></span>
-              <p class="m-0">Date Picker</p>
-            </div>
-          </div>
-
-          <!-- Dropdown -->
-          <div nz-card-grid (click)="addNewItem('dropdown')" [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="down-square" nzTheme="outline"></span>
-              <p class="m-0">Dropdown</p>
-            </div>
-          </div>
-
-          <!-- Input Number -->
-          <div nz-card-grid (click)="addNewItem('inputNumber')" [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="number" nzTheme="outline"></span>
-              <p class="m-0">Input Number</p>
-            </div>
-          </div>
-
-          <!-- Form -->
-          <div nz-card-grid (click)="addNewItem('form')" [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="form" nzTheme="outline"></span>
-              <p class="m-0">Form</p>
-            </div>
-          </div>
-
-          <!-- Task -->
-          <div nz-card-grid (click)="addNewItem('task')" [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="check-circle" nzTheme="outline"></span>
-              <p class="m-0">Task</p>
-            </div>
-          </div>
-
-          <!-- Another component (if needed) -->
-          <div nz-card-grid [ngStyle]="gridStyle">
-            <div class="icons-list d-flex align-items-center">
-              <span nz-icon nzType="appstore-add" nzTheme="outline"></span>
-              <p class="m-0">Another Component</p>
-            </div>
-          </div>
-
-        </nz-card>
+        <app-dynamic-card [title]="'Teste'" [cardIcon]="'dot-chart'"></app-dynamic-card>
       </ng-container>
     </nz-modal>
   </div>

@@ -3,7 +3,6 @@ import {v4 as uuidv4} from 'uuid';
 import {PdfGeneratorService} from "./pdf-gen/pdf-generator.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import {NzPlacementType} from "ng-zorro-antd/dropdown";
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -33,8 +32,9 @@ export class CadastroRelatorioTelaComponent {
 
   public deleteItem(itemId: string) {
     this.items = this.items.filter(item => item.id !== itemId);
-    this.previewContent = '';
+    this.updatePreview();
   }
+
 
   public gridStyle = { //style do card
     width: '50%',
