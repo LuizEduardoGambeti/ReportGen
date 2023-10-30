@@ -1,0 +1,10 @@
+[
+  {
+    "nome": "Upload",
+    "tipoComponente": "upload"
+  },
+  {
+    "nome": "DatePicker",
+    "tipoComponente": "datePicker"
+  }
+]
