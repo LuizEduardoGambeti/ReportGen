@@ -1,7 +1,8 @@
 <app-layout-formater>
   <div left-content>
-    <app-dynamic-container [componentType]="'input'"></app-dynamic-container>
-
+    <div *ngFor="let item of data">
+      <app-dynamic-container [componentType]="item.tipoComponente"></app-dynamic-container>
+    </div>
     <app-collapse-cadastro-itens *ngFor="let item of items" [icon]="'double-right'" [title]="'teste'" [active]="true">
 
       <button nz-button class="mt-2" nzType="primary" (click)="deleteItem(item.id)">Deletar</button>
@@ -11,9 +12,15 @@
       <button nz-button nzType="primary" (click)="showModal()" nzShape="round" nzBlock>Adicionar item</button>
     </div>
     <!--  modal -->
-    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Selecionar Componente" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
       <ng-container *nzModalContent>
-        <app-dynamic-card [title]="'Teste'" [cardIcon]="'dot-chart'"></app-dynamic-card>
+        <ng-container *ngFor="let componentData of componentsList">
+          <app-dynamic-card
+            [title]="componentData.nome"
+            [cardIcon]="'dot-chart'"
+            (click)="addComponent(componentData.tipoComponente)">
+          </app-dynamic-card>
+        </ng-container>
       </ng-container>
     </nz-modal>
   </div>

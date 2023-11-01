@@ -40,7 +40,7 @@ export class DynamicContainerComponent implements OnInit, AfterViewInit {
             card: DynamicCardComponent,
             dropDown: DynamicDropdownComponent,
             input: DynamicInputComponent,
-            inputNumber: DynamicInputNumberComponent,
+            number: DynamicInputNumberComponent,
             radioButton: DynamicRadioButtonComponent,
         };
 

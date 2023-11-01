@@ -29,36 +29,23 @@ export class PdfGeneratorService {
         },
         {
           columns: [
+            { text: '- LTIE -', style: 'subHeader', alignment: 'left' },
             [
-              {text: 'Nº Relatório', style: 'subheader'},
-              {text: '159.22'} // Ajustar conforme necessário
-            ],
-            [
-              {text: 'Página:', style: 'subheader'},
-              {text: '12/82'} // Ajustar conforme necessário
-            ],
-            [
-              {text: 'Empresa', style: 'subheader'},
-              {text: 'De Marchi'} // Ajustar conforme necessário
-            ],
-            [
-              {text: 'Data:', style: 'subheader'},
-              {text: '25/08/2022'} // Ajustar conforme necessário
-            ],
-            [
-              {text: 'Local', style: 'subheader'},
-              {text: 'Unidade Jundiaí'} // Ajustar conforme necessário
+              { text: 'Nº : 159/22', style: 'subheader', alignment: 'right' },
+              { text: 'PAG : 77/82', style: 'subheader', alignment: 'right' },
+              { text: 'DATA : 25/08/2022', style: 'subheader', alignment: 'right' },
             ]
-          ]
+          ],
         },
+        { text: 'SITUAÇÃO DA EMPRESA OBSERVADAS COM BASE NO TEXTO DA NR-10', style: 'subHeader', bold: true },
         {
-          table: {
-            body: [
-              // Aqui você deve adicionar as linhas da tabela, como:
-              ['ITEM', 'DESCRIÇÃO', 'CONFORME', 'NÃO CONFORME']
-              // E continuar com as outras linhas conforme o conteúdo necessário.
-            ]
-          }
+          ol: [
+            [
+              'A empresa mantém esquemas unifilares atualizado das instalações elétricas com especificação do sistema de aterramento e demais equipamentos e dispositivos de proteção. (item 10.2.3)',
+              { text: 'Evidenciado: Não, a empresa possui diagrama unifilar, porém existe a necessidade atualizar, faltando a montagem do prontuário de acordo com a NR10.', style: 'bodyText' },
+            ],
+            // Continue adicionando os outros itens como o exemplo acima
+          ]
         },
         {text: previewContent}
       ],
@@ -66,18 +53,18 @@ export class PdfGeneratorService {
         header: {
           fontSize: 24,
           bold: true,
-          margin: [0, 20, 0, 30],  // Margem superior e inferior aumentada para dar mais espaço
-          color: '#2C3E50'  // Uma cor de fonte mais escura
+          margin: [0, 20, 0, 30],
+          color: '#2C3E50'
         },
         subHeader: {
-          fontSize: 20,
+          fontSize: 18,
           bold: true,
-          margin: [0, 10, 0, 20],  // Espaço um pouco menor que o cabeçalho
+          margin: [0, 10, 0, 20],
           color: '#34495E'
         },
         bodyText: {
-          fontSize: 16,
-          margin: [0, 0, 0, 15],  // Uma pequena margem inferior para dar espaço entre os parágrafos
+          fontSize: 14,
+          margin: [0, 0, 0, 15],
           color: '#7F8C8D'
         }
       }

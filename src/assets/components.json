@@ -1,0 +1,22 @@
+[
+  {
+    "nome": "Upload",
+    "tipoComponente": "input"
+  },
+  {
+    "nome": "DatePicker",
+    "tipoComponente": "datePicker"
+  },
+  {
+    "nome": "number",
+    "tipoComponente": "number"
+  },
+  {
+    "nome": "DatePicker",
+    "tipoComponente": "datePicker"
+  },
+  {
+    "nome": "teteu",
+    "tipoComponente": "dropDown"
+  }
+]

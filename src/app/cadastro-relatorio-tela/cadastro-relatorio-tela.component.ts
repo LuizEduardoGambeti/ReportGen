@@ -1,8 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {v4 as uuidv4} from 'uuid';
-import {PdfGeneratorService} from "./pdf-gen/pdf-generator.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
+import { PdfGeneratorService } from "./pdf-gen/pdf-generator.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { ComponentsDataService } from "../dynamics-components/dynamic-data/components-data.service";
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -11,35 +12,36 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
   templateUrl: './cadastro-relatorio-tela.component.html',
   styleUrls: ['./cadastro-relatorio-tela.component.scss']
 })
-export class CadastroRelatorioTelaComponent {
+export class CadastroRelatorioTelaComponent implements OnInit {
   public items: { id: string, type: string, value?: any }[] = [];
   public isVisible = false;
-  @Input() icon: string = '';  // Ícone do painel
-  previewContent: string = '';
+  @Input() icon: string = '';
+  public previewContent: string = '';
+  public data: any[] = [];
+  public componentsList: any[] = [];
 
-  constructor(private pdfService: PdfGeneratorService) {
+  constructor(private pdfService: PdfGeneratorService, private componentDataService: ComponentsDataService) {}
+
+  public ngOnInit(): void {
+    this.componentDataService.getData().subscribe(response => {
+      this.componentsList = response;
+    });
   }
 
-  public updatePreview() {
+  public addComponent(componentType: string): void {
+    this.data.push({tipoComponente: componentType});
+    this.isVisible = false;
+  }
+
+  public updatePreview(): void {
     this.previewContent = this.items.map(item => item.value).join(' ');
   }
 
 
-  public addNewItem(type: string) {
-    this.items.push({ id: uuidv4(), type: type });
-    this.isVisible = false;
-  }
-
-  public deleteItem(itemId: string) {
+  public deleteItem(itemId: string): void {
     this.items = this.items.filter(item => item.id !== itemId);
     this.updatePreview();
   }
-
-
-  public gridStyle = { //style do card
-    width: '50%',
-    textAlign: 'center'
-  };
 
   public showModal(): void {
     this.isVisible = true;
@@ -58,5 +60,4 @@ export class CadastroRelatorioTelaComponent {
   public generatePDF(): void {
     this.pdfService.generatePDF(this.previewContent);
   }
-
 }
