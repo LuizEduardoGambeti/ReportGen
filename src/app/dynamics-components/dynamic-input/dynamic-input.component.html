@@ -1,4 +1,3 @@
 <nz-input-group>
-  <input [(ngModel)]="value" [placeholder]="placeholder" nz-input/>
+  <input [ngModel]="value" (ngModelChange)="handleInputChange($event)" />
 </nz-input-group>
-

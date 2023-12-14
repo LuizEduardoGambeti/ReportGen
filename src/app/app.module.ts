@@ -43,6 +43,8 @@ import {NzSelectModule} from "ng-zorro-antd/select";
 import {NzUploadModule} from "ng-zorro-antd/upload";
 import {DynamicCardComponent} from './dynamics-components/dynamic-card/dynamic-card.component';
 import {ComponentsDataService} from "./dynamics-components/dynamic-data/components-data.service";
+import { DashboardCardComponent } from './dynamics-components/dashboard-card/dashboard-card.component';
+import { GenericPageLayoutContainerComponent } from './generic-page-layout-container/generic-page-layout-container.component';
 
 registerLocaleData(en);
 
@@ -64,6 +66,8 @@ registerLocaleData(en);
     AnchorDirective,
     DynamicContainerComponent,
     DynamicCardComponent,
+    DashboardCardComponent,
+    GenericPageLayoutContainerComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,5 +7,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class DynamicRadioButtonComponent {
   @Input() options: { value: string, label: string }[] = [];
   @Input() value!: string;
-  @Output() valueChange = new EventEmitter<string>();
+  @Output() onValueChange = new EventEmitter<string>();
+
+  constructor() { }
+
+  public handleInputChange(newValue: string) {
+    this.onValueChange.emit(newValue);
+  }
 }

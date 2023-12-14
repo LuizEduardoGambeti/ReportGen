@@ -1,18 +1,32 @@
 <app-layout-formater>
   <div left-content>
+    <!-- Itera sobre os componentes dinâmicos -->
     <div *ngFor="let item of data">
-      <app-dynamic-container [componentType]="item.tipoComponente"></app-dynamic-container>
+      <app-dynamic-container
+        [componentType]="item.tipoComponente"
+        [value]="item.data"
+        (onValueChange)="onValueChange(item.id, $event)">
+      </app-dynamic-container>
     </div>
-    <app-collapse-cadastro-itens *ngFor="let item of items" [icon]="'double-right'" [title]="'teste'" [active]="true">
+    <div class="debug-area">
+      <app-dynamic-dropdown [options]="dropdownOptions"></app-dynamic-dropdown>
 
+      <h3>Debug: Dados Atuais</h3>
+      <pre>{{ data | json }}</pre>
+    </div>
+    <!-- Itera sobre os itens de colapso -->
+    <app-collapse-cadastro-itens *ngFor="let item of items" [icon]="'double-right'" [title]="'teste'" [active]="true">
       <button nz-button class="mt-2" nzType="primary" (click)="deleteItem(item.id)">Deletar</button>
     </app-collapse-cadastro-itens>
-    <!--  BTN do menu -->
+
+    <!-- Botão para adicionar item -->
     <div class="d-flex col-12 ml-5">
       <button nz-button nzType="primary" (click)="showModal()" nzShape="round" nzBlock>Adicionar item</button>
     </div>
-    <!--  modal -->
-    <nz-modal [(nzVisible)]="isVisible" nzTitle="Selecionar Componente" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+    <!-- Modal para seleção de componente -->
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Selecionar Componente" (nzOnCancel)="handleCancel()"
+              (nzOnOk)="handleOk()">
       <ng-container *nzModalContent>
         <ng-container *ngFor="let componentData of componentsList">
           <app-dynamic-card
@@ -24,11 +38,15 @@
       </ng-container>
     </nz-modal>
   </div>
+
+  <!-- Área de pré-visualização e botão de geração de PDF -->
   <div right-content>
     <div class="preview-area">
       {{ previewContent }}
     </div>
     <button (click)="generatePDF()">Gerar PDF</button>
   </div>
+
+  <!-- Área de Debug -->
 
 </app-layout-formater>

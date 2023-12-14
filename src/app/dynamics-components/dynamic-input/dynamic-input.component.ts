@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output} from "@angular/core";
 
 @Component({
   selector: 'app-dynamic-input',
@@ -7,14 +7,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class DynamicInputComponent {
 
-  @Input() placeholder: string = 'Digite algo...';
   @Input() value!: string;
-  @Output() valueChange = new EventEmitter<string>();
+  @Output() onValueChange: EventEmitter<string> = new EventEmitter<string>();
+  constructor() {
+  }
 
-  constructor() { }
-
-  ngOnChanges() {
-    this.valueChange.emit(this.value);
+  public handleInputChange(newValue: string) {
+    this.onValueChange.emit(newValue);
   }
 
 }

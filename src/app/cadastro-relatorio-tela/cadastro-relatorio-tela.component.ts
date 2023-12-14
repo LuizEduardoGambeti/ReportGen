@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 import { PdfGeneratorService } from "./pdf-gen/pdf-generator.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
@@ -17,10 +17,14 @@ export class CadastroRelatorioTelaComponent implements OnInit {
   public isVisible = false;
   @Input() icon: string = '';
   public previewContent: string = '';
-  public data: any[] = [];
+  public data: { id: string, tipoComponente: string, data: string }[] = [];
   public componentsList: any[] = [];
-
-  constructor(private pdfService: PdfGeneratorService, private componentDataService: ComponentsDataService) {}
+  public dropdownOptions = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+  ];
+  constructor(private pdfService: PdfGeneratorService, private componentDataService: ComponentsDataService) {
+  }
 
   public ngOnInit(): void {
     this.componentDataService.getData().subscribe(response => {
@@ -29,17 +33,27 @@ export class CadastroRelatorioTelaComponent implements OnInit {
   }
 
   public addComponent(componentType: string): void {
-    this.data.push({tipoComponente: componentType});
+    this.data.push({ id: uuidv4(), tipoComponente: componentType, data: '' });
     this.isVisible = false;
+    this.updatePreview();
+  }
+
+  public onValueChange(componentId: string, newValue: string): void {
+    const component = this.data.find(c => c.id === componentId);
+    if (component) {
+      component.data = newValue;
+    }
+    this.updatePreview();
   }
 
   public updatePreview(): void {
-    this.previewContent = this.items.map(item => item.value).join(' ');
+    this.previewContent = this.data.map(item => {
+      return `${item.tipoComponente}: ${item.data || ''}`;
+    }).join('\n');
   }
 
-
   public deleteItem(itemId: string): void {
-    this.items = this.items.filter(item => item.id !== itemId);
+    this.data = this.data.filter(item => item.id !== itemId);
     this.updatePreview();
   }
 

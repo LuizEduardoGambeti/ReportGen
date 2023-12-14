@@ -9,6 +9,6 @@ export class ComponentsDataService {
   constructor(private http: HttpClient) { }
 
   public getData(): Observable<any[]> {
-    return this.http.get<any[]>('assets/components.json'); // Caminho relativo ao arquivo JSON
+    return this.http.get<any[]>('assets/components.json');
   }
 }

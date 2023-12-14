@@ -1,6 +1,6 @@
 [
   {
-    "nome": "Upload",
+    "nome": "input",
     "tipoComponente": "input"
   },
   {
@@ -8,15 +8,25 @@
     "tipoComponente": "datePicker"
   },
   {
-    "nome": "number",
+    "nome": "RadioButton",
+    "tipoComponente": "radioButton",
+    "options": [
+      {"value": "bababoi", "label":  "asdasd"},
+      {"value": "teste3", "label":  "option2"}
+    ]
+  },
+  {
+    "nome": "dropDown",
+    "tipoComponente": "dropDown",
+    "options": [
+      { "value": "valor1", "label": "Label 1" },
+      { "value": "valor2", "label": "Label 2" }
+    ]
+  },
+  {
+    "nome": "Number",
     "tipoComponente": "number"
-  },
-  {
-    "nome": "DatePicker",
-    "tipoComponente": "datePicker"
-  },
-  {
-    "nome": "teteu",
-    "tipoComponente": "dropDown"
   }
+
 ]
+
