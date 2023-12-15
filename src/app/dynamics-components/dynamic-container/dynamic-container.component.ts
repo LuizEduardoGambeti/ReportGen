@@ -97,7 +97,7 @@ export class DynamicContainerComponent implements AfterViewInit {
       this.componentRef.instance.options = options;
     }
   }
-  public loadOptionsForDropdown ( ) {
+  public loadOptionsForDropdown () {
     this.componentsDataService.getData().subscribe(components => {
       const dropdowncomponent = components.find(c => c.tipoComponente === 'dropDown');
       console.log(dropdowncomponent)
@@ -106,7 +106,6 @@ export class DynamicContainerComponent implements AfterViewInit {
         this.setOptionsForDropdown(dropdowncomponent.options);
       }
     });
-    console.log(this.componentsDataService.getData())
   }
   private setOptionsForDropdown(options: any[]) {
     if (this.componentRef && this.componentRef.instance instanceof DynamicDropdownComponent) {

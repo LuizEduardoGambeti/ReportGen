@@ -12,7 +12,6 @@ export class DynamicDropdownComponent {
   @Input() value!: string;
   @Output() onValueChange = new EventEmitter<string>();
 
-  selectedValue: any; // Pode ser adaptado conforme a necessidade
 
   public handleInputChange(newValue: string) {
     this.onValueChange.emit(newValue);
