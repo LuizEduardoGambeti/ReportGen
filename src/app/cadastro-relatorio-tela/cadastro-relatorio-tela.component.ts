@@ -4,6 +4,7 @@ import { PdfGeneratorService } from "./pdf-gen/pdf-generator.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ComponentsDataService } from "../dynamics-components/dynamic-data/components-data.service";
+import {PdfPreviewService} from "./pdf-gen/pdf-preview.service";
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -23,13 +24,14 @@ export class CadastroRelatorioTelaComponent implements OnInit {
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
   ];
-  constructor(private pdfService: PdfGeneratorService, private componentDataService: ComponentsDataService) {
+  constructor(private pdfService: PdfGeneratorService, private componentDataService: ComponentsDataService, private pdfPreviewService: PdfPreviewService) {
   }
 
   public ngOnInit(): void {
     this.componentDataService.getData().subscribe(response => {
       this.componentsList = response;
     });
+    this.previewContent = this.pdfPreviewService.getHtmlPreview();
   }
 
   public addComponent(componentType: string): void {

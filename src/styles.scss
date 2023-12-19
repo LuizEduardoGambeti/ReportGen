@@ -25,3 +25,16 @@ $prefix: "mo-";
 @import "../node_modules/bootstrap/scss/grid";
 @import "../node_modules/bootstrap/scss/helpers";
 @import "../node_modules/bootstrap/scss/utilities/api";
+/* styles.css */
+.header-style {
+  font-size: 24px;
+  color: #2C3E50;
+}
+.sub-header-style {
+  font-size: 18px;
+  color: #34495E;
+}
+.body-text-style {
+  font-size: 14px;
+  color: #7F8C8D;
+}

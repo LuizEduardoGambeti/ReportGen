@@ -8,12 +8,6 @@
         (onValueChange)="onValueChange(item.id, $event)">
       </app-dynamic-container>
     </div>
-    <div class="debug-area">
-      <app-dynamic-dropdown [options]="dropdownOptions"></app-dynamic-dropdown>
-
-      <h3>Debug: Dados Atuais</h3>
-      <pre>{{ data | json }}</pre>
-    </div>
     <!-- Itera sobre os itens de colapso -->
     <app-collapse-cadastro-itens *ngFor="let item of items" [icon]="'double-right'" [title]="'teste'" [active]="true">
       <button nz-button class="mt-2" nzType="primary" (click)="deleteItem(item.id)">Deletar</button>
@@ -44,6 +38,7 @@
     <div class="preview-area">
       {{ previewContent }}
     </div>
+    <div [innerHTML]="previewContent"></div>
     <button (click)="generatePDF()">Gerar PDF</button>
   </div>
 

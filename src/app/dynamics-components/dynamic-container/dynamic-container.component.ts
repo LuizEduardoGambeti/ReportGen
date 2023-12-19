@@ -6,7 +6,7 @@ import {
   ViewChild,
   AfterViewInit,
   ComponentRef,
-  Output, EventEmitter
+  Output, EventEmitter, ChangeDetectorRef
 } from '@angular/core';
 import { DynamicUploadComponent } from "../dynamic-upload/dynamic-upload.component";
 import { DynamicDatePickerComponent } from "../dynamic-date-picker/dynamic-date-picker.component";
@@ -34,7 +34,9 @@ export class DynamicContainerComponent implements AfterViewInit {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private anchorService: AnchorService,
-    private componentsDataService: ComponentsDataService
+    private componentsDataService: ComponentsDataService,
+    private changeDetectorRef: ChangeDetectorRef
+
   ) { }
 
   ngAfterViewInit() {
@@ -72,10 +74,11 @@ export class DynamicContainerComponent implements AfterViewInit {
       this.componentRef = viewContainerRef.createComponent(factory);
 
       this.componentRef.instance.value = this.value;
+      this.changeDetectorRef.detectChanges();
       this.componentRef.instance.onValueChange.subscribe(this.handleValueChange.bind(this));
-
       if (componentToLoad === DynamicRadioButtonComponent ) {
         this.loadOptionsForRadioButton();
+      } else if (componentToLoad === DynamicDropdownComponent){
         this.loadOptionsForDropdown();
       }
     }
@@ -97,19 +100,27 @@ export class DynamicContainerComponent implements AfterViewInit {
       this.componentRef.instance.options = options;
     }
   }
-  public loadOptionsForDropdown () {
+  public loadOptionsForDropdown() {
     this.componentsDataService.getData().subscribe(components => {
+      console.log("Componentes recebidos do serviço:", components); // Log 1
       const dropdowncomponent = components.find(c => c.tipoComponente === 'dropDown');
-      console.log(dropdowncomponent)
-      console.log(dropdowncomponent.options)
+      console.log("Componente Dropdown encontrado:", dropdowncomponent); // Log 2
       if (dropdowncomponent && dropdowncomponent.options) {
         this.setOptionsForDropdown(dropdowncomponent.options);
+        this.changeDetectorRef.detectChanges(); // Adicione esta linha se necessário
+      } else {
+        console.log("Nenhum componente Dropdown ou opções encontradas"); // Log 3
       }
     });
   }
+
   private setOptionsForDropdown(options: any[]) {
+    console.log("Definindo opções para Dropdown:", options); // Log 4
     if (this.componentRef && this.componentRef.instance instanceof DynamicDropdownComponent) {
       this.componentRef.instance.options = options;
+      console.log("Opções definidas para o componente Dropdown"); // Log 5
+    } else {
+      console.log("ComponentRef é nulo ou não é uma instância de DynamicDropdownComponent"); // Log 6
     }
   }
 }

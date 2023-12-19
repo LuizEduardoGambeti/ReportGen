@@ -18,6 +18,7 @@
   {
     "nome": "dropDown",
     "tipoComponente": "dropDown",
+    "value": "teste",
     "options": [
       { "value": "valor1", "label": "Label 1" },
       { "value": "valor2", "label": "Label 2" }

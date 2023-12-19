@@ -19,7 +19,7 @@ export class PdfGeneratorService {
     pdfMake.createPdf(documentDefinition).open();
   }
 
-  private getDocumentDefinition(previewContent: string): any {
+  public getDocumentDefinition(previewContent: string): any {
     return {
       content: [
         {
