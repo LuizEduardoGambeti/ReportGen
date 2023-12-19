@@ -4,8 +4,8 @@
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-access-key-id: AKIARYQJ6K5ULTUEFHFD
+        aws-secret-access-key: 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
         aws-region: sa-east-1
 
     - name: Checkout
