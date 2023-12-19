@@ -6,7 +6,7 @@
       with:
         aws-access-key-id: AKIARYQJ6K5ULTUEFHFD
         aws-secret-access-key: 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
-        aws-region: sa-east-1
+        aws-region: us-east-2
 
     - name: Checkout
       uses: actions/checkout@v2
