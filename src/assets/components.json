@@ -11,8 +11,14 @@
     "nome": "RadioButton",
     "tipoComponente": "radioButton",
     "options": [
-      {"value": "bababoi", "label":  "asdasd"},
-      {"value": "teste3", "label":  "option2"}
+      {
+        "value": "bababoi",
+        "label": "asdasd"
+      },
+      {
+        "value": "teste3",
+        "label": "option2"
+      }
     ]
   },
   {
@@ -20,14 +26,27 @@
     "tipoComponente": "dropDown",
     "value": "teste",
     "options": [
-      { "value": "valor1", "label": "Label 1" },
-      { "value": "valor2", "label": "Label 2" }
+      {
+        "value": "valor1",
+        "label": "Label 1"
+      },
+      {
+        "value": "valor2",
+        "label": "Label 2"
+      }
     ]
   },
   {
     "nome": "Number",
     "tipoComponente": "number"
-  }
-
+  },
+  {
+    "nome": "card",
+    "tipoComponente": "inputCard",
+    "options": [
+      {
+        "tipoComponenteInput": "number"
+      }
+    ]  }
 ]
 

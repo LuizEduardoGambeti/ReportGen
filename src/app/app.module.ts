@@ -45,6 +45,7 @@ import {DynamicCardComponent} from './dynamics-components/dynamic-card/dynamic-c
 import {ComponentsDataService} from "./dynamics-components/dynamic-data/components-data.service";
 import { DashboardCardComponent } from './dynamics-components/dashboard-card/dashboard-card.component';
 import { GenericPageLayoutContainerComponent } from './generic-page-layout-container/generic-page-layout-container.component';
+import { DynamicCardInputsComponent } from './dynamics-components/dynamic-card-inputs/dynamic-card-inputs.component';
 
 registerLocaleData(en);
 
@@ -68,6 +69,7 @@ registerLocaleData(en);
     DynamicCardComponent,
     DashboardCardComponent,
     GenericPageLayoutContainerComponent,
+    DynamicCardInputsComponent,
   ],
   imports: [
     BrowserModule,
