@@ -1,6 +1,5 @@
 # ReportGen
 http://reportgen-bucket.s3-website.us-east-2.amazonaws.com/login
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server
 
