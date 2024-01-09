@@ -131,6 +131,7 @@ export class DynamicContainerComponent implements AfterViewInit {
     }
   }
   public loadOptionsForCardInput() {
+    
     this.componentsDataService.getData().subscribe(components => {
       console.log("Componentes recebidos do serviço:", components); // Log 1
       const cardComponent = components.find(c => c.tipoComponente === 'inputCard');
@@ -145,7 +146,7 @@ export class DynamicContainerComponent implements AfterViewInit {
   }
 
   private setOptionsForCardInput(options: any[]) {
-    console.log("Definindo opções para Dropdown:", options); // Log 4
+    console.log("Definindo opções para Card:", options); // Log 4
     if (this.componentRef && this.componentRef.instance instanceof DynamicCardInputsComponent) {
       this.componentRef.instance.options = options;
       console.log("Opções definidas para o componente Dropdown"); // Log 5

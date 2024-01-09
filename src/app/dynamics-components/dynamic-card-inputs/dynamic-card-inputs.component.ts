@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class DynamicCardInputsComponent implements OnInit{
   @Input() options: { tipoComponenteInput: string}[] = [];
-
+  @Input() title: String = 'teste';
   ngOnInit(): void {
   }
 }

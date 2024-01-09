@@ -45,6 +45,8 @@
     "tipoComponente": "inputCard",
     "options": [
       {
+        "tipoComponente": "number",
+
         "tipoComponenteInput": "number"
       }
     ]  }
