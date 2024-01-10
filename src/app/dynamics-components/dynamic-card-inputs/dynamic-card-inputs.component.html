@@ -1,8 +1,8 @@
-<div style="background: #ECECEC;padding:30px;">
-  <nz-card style="width:300px;" [nzBordered]="false" nzTitle="{{title}}">
-    <!-- Itera sobre os componentes que devem ser inseridos no card -->
-    <ng-container *ngFor="let option of options">
-      <app-dynamic-container [componentType]="option.tipoComponenteInput"></app-dynamic-container>
-    </ng-container>
-  </nz-card>
-</div>
+<nz-card>
+  <div nz-card-grid>
+    <div class="icons-list d-flex align-items-center">
+      <span nz-icon [nzType]="cardIcon" nzTheme="outline"></span>
+      <p class="m-0">{{ cardTitle }}</p>
+    </div>
+  </div>
+</nz-card>

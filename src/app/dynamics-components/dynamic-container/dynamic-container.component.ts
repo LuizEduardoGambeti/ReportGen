@@ -17,8 +17,8 @@ import { DynamicInputComponent } from "../dynamic-input/dynamic-input.component"
 import { DynamicInputNumberComponent } from "../dynamic-input-number/dynamic-input-number.component";
 import { DynamicRadioButtonComponent } from "../dynamic-radio-button/dynamic-radio-button.component";
 import { AnchorService } from "../anchor/anchor.service";
-import {ComponentsDataService} from "../dynamic-data/components-data.service";
-import {DynamicCardInputsComponent} from "../dynamic-card-inputs/dynamic-card-inputs.component";
+import { ComponentsDataService } from "../dynamic-data/components-data.service";
+import { DynamicCardInputsComponent } from "../dynamic-card-inputs/dynamic-card-inputs.component";
 
 @Component({
   selector: 'app-dynamic-container',
@@ -37,22 +37,24 @@ export class DynamicContainerComponent implements AfterViewInit {
     private anchorService: AnchorService,
     private componentsDataService: ComponentsDataService,
     private changeDetectorRef: ChangeDetectorRef
-
   ) { }
 
   ngAfterViewInit() {
     this.anchorService.viewContainerRef = this.appAnchor.viewContainerRef;
+    console.log("DynamicContainerComponent: ngAfterViewInit - ViewContainerRef definido");
     this.loadComponent();
   }
 
   public handleValueChange(newValue: string) {
     this.onValueChange.emit(newValue);
+    console.log("DynamicContainerComponent: handleValueChange - Novo valor emitido:", newValue);
   }
 
   public loadComponent() {
+    console.log("DynamicContainerComponent: loadComponent - Iniciando com tipo:", this.componentType);
     const viewContainerRef = this.anchorService.viewContainerRef;
     if (!viewContainerRef) {
-      console.error('ViewContainerRef is null');
+      console.error('DynamicContainerComponent: loadComponent - ViewContainerRef é nulo');
       return;
     }
 
@@ -69,33 +71,37 @@ export class DynamicContainerComponent implements AfterViewInit {
       inputCard: DynamicCardInputsComponent
     };
 
-    const componentToLoad = componentMap[this.componentType as keyof typeof componentMap];
+    const componentToLoad = componentMap[this.componentType];
     if (componentToLoad) {
-
       const factory = this.componentFactoryResolver.resolveComponentFactory(componentToLoad);
       this.componentRef = viewContainerRef.createComponent(factory);
+      console.log("DynamicContainerComponent: loadComponent - Componente criado:", this.componentRef.instance);
 
       this.componentRef.instance.value = this.value;
       this.changeDetectorRef.detectChanges();
+
       this.componentRef.instance.onValueChange.subscribe(this.handleValueChange.bind(this));
-      if (componentToLoad === DynamicRadioButtonComponent ) {
+      console.log("DynamicContainerComponent: loadComponent - Inscrito em onValueChange");
+
+      if (componentToLoad === DynamicRadioButtonComponent) {
+        console.log("DynamicContainerComponent: loadComponent - Carregando opções para RadioButton");
         this.loadOptionsForRadioButton();
-      } else if (componentToLoad === DynamicDropdownComponent){
-        console.log('teste')
+      } else if (componentToLoad === DynamicDropdownComponent) {
+        console.log("DynamicContainerComponent: loadComponent - Carregando opções para Dropdown");
         this.loadOptionsForDropdown();
-      }
-      else if (componentToLoad === DynamicCardInputsComponent){
-        console.log('eu existo')
+      } else if (componentToLoad === DynamicCardInputsComponent) {
+        console.log("DynamicContainerComponent: loadComponent - Alterando título do Card");
         this.loadOptionsForCardInput();
       }
+    } else {
+      console.error("DynamicContainerComponent: loadComponent - Nenhum componente mapeado para o tipo:", this.componentType);
     }
   }
 
   private loadOptionsForRadioButton() {
     this.componentsDataService.getData().subscribe(components => {
       const radioButtonComponent = components.find(c => c.tipoComponente === 'radioButton');
-      const dropdowncomponent = components.find(c => c.tipoComponente === 'dropDown');
-      console.log(dropdowncomponent.options)
+      console.log("DynamicContainerComponent: loadOptionsForRadioButton - Componente RadioButton encontrado:", radioButtonComponent);
       if (radioButtonComponent && radioButtonComponent.options) {
         this.setOptionsForRadioButton(radioButtonComponent.options);
       }
@@ -105,53 +111,44 @@ export class DynamicContainerComponent implements AfterViewInit {
   private setOptionsForRadioButton(options: any[]) {
     if (this.componentRef && this.componentRef.instance instanceof DynamicRadioButtonComponent) {
       this.componentRef.instance.options = options;
+      console.log("DynamicContainerComponent: setOptionsForRadioButton - Opções definidas para RadioButton");
     }
   }
+
   public loadOptionsForDropdown() {
     this.componentsDataService.getData().subscribe(components => {
-      console.log("Componentes recebidos do serviço:", components); // Log 1
-      const dropdowncomponent = components.find(c => c.tipoComponente === 'dropDown');
-      console.log("Componente Dropdown encontrado:", dropdowncomponent); // Log 2
-      if (dropdowncomponent && dropdowncomponent.options) {
-        this.setOptionsForDropdown(dropdowncomponent.options);
-        this.changeDetectorRef.detectChanges(); // Adicione esta linha se necessário
-      } else {
-        console.log("Nenhum componente Dropdown ou opções encontradas"); // Log 3
+      console.log("DynamicContainerComponent: loadOptionsForDropdown - Componentes recebidos:", components);
+      const dropdownComponent = components.find(c => c.tipoComponente === 'dropDown');
+      console.log("DynamicContainerComponent: loadOptionsForDropdown - Componente Dropdown encontrado:", dropdownComponent);
+      if (dropdownComponent && dropdownComponent.options) {
+        this.setOptionsForDropdown(dropdownComponent.options);
       }
     });
   }
 
   private setOptionsForDropdown(options: any[]) {
-    console.log("Definindo opções para Dropdown:", options); // Log 4
     if (this.componentRef && this.componentRef.instance instanceof DynamicDropdownComponent) {
       this.componentRef.instance.options = options;
-      console.log("Opções definidas para o componente Dropdown"); // Log 5
-    } else {
-      console.log("ComponentRef é nulo ou não é uma instância de DynamicDropdownComponent"); // Log 6
+      console.log("DynamicContainerComponent: setOptionsForDropdown - Opções definidas para Dropdown");
     }
   }
-  public loadOptionsForCardInput() {
-    
+
+  private loadOptionsForCardInput() {
     this.componentsDataService.getData().subscribe(components => {
-      console.log("Componentes recebidos do serviço:", components); // Log 1
       const cardComponent = components.find(c => c.tipoComponente === 'inputCard');
-      console.log("Componente card encontrado:", cardComponent); // Log 2
       if (cardComponent && cardComponent.options) {
         this.setOptionsForCardInput(cardComponent.options);
-        this.changeDetectorRef.detectChanges();
-      } else {
-        console.log("Nenhum componente Dropdown ou opções encontradas"); // Log 3
       }
     });
   }
-
   private setOptionsForCardInput(options: any[]) {
-    console.log("Definindo opções para Card:", options); // Log 4
     if (this.componentRef && this.componentRef.instance instanceof DynamicCardInputsComponent) {
-      this.componentRef.instance.options = options;
-      console.log("Opções definidas para o componente Dropdown"); // Log 5
-    } else {
-      console.log("ComponentRef é nulo ou não é uma instância de DynamicDropdownComponent"); // Log 6
+      const cardTitleOption = options.find(option => option.cardTitle);
+      if (cardTitleOption) {
+        this.componentRef.instance.cardTitle = cardTitleOption.cardTitle;
+      }
     }
   }
+
+  // Outros métodos necessários...
 }

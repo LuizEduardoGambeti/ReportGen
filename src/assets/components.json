@@ -45,10 +45,9 @@
     "tipoComponente": "inputCard",
     "options": [
       {
-        "tipoComponente": "number",
-
-        "tipoComponenteInput": "number"
+        "cardTitle": "Título do nosso Card"
       }
-    ]  }
+    ]
+  }
 ]
 
