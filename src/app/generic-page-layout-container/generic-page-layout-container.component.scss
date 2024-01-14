@@ -1,11 +1,34 @@
+
 .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+  margin-top: 10px;
+  padding: 10%;
 }
 
 .layout {
   min-height: 100vh;
+  background-color: #F5F5F5;
+}
+
+.line{
+  padding: 5%;
+  border-top: 2px solid yellow;
+  width:80%;
+}
+
+.line-two{
+  padding: 1%;
+  border-top: 2px solid yellow;
+  width:100%;
+  justify-content: center;
+
+}
+
+.content-icons {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+
 }
 
 nz-sider {
@@ -13,9 +36,11 @@ nz-sider {
   height: 100%;
   position: fixed;
   left: 0;
+
 }
 
 .right-layout {
+
   margin-left: 200px;
 }
 
@@ -31,10 +56,17 @@ nz-content {
 
 .inner-content {
   padding: 24px;
-  background: #fff;
   text-align: center;
+  width: 100%;
 }
 
-nz-footer {
-  text-align: center;
+.txt-title{
+  padding: 3%;
+  width: 100%;
+  height: 50px;
+}
+
+.content-left{
+
+  width: 201px;
 }

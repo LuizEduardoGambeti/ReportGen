@@ -1,49 +1,37 @@
-<nz-layout class="layout">
-  <nz-sider>
-    <div class="logo"></div>
-    <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item>
-        <span nz-icon nzType="file"></span>
-        <span>nav 1</span>
+<nz-layout class="layout rg-default">
+  <nz-sider class="rg-background-brown ">
+    <div class="logo">
+    <h3 class="rg-yellow fw-bold">REPORTGEN</h3>
+    </div>
+
+    <ul class="rg-background-brown content-left d-flex flex-column  align-items-center h-30 mt-lg-5" nz-menu  nzMode="inline">
+      <span class="line"></span>
+      <li class="content-icons" nz-menu-item>
+          <span  class="rg-icons"  nz-icon nzType="home"></span>
+          <span class="rg-yellow fw-semibold m-1">Inicio</span>
       </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="video-camera"></span>
-        <span>nav 2</span>
+      <li class="content-icons" nz-menu-item>
+        <span  class="rg-icons" nz-icon nzType="user"></span>
+        <span class="rg-yellow fw-semibold m-1">Usuário</span>
       </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="upload"></span>
-        <span>nav 3</span>
-      </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="bar-chart"></span>
-        <span>nav 4</span>
-      </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="cloud-o"></span>
-        <span>nav 5</span>
-      </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="appstore-o"></span>
-        <span>nav 6</span>
-      </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="team"></span>
-        <span>nav 7</span>
-      </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="shop"></span>
-        <span>nav 8</span>
+      <li class="content-icons" nz-menu-item>
+        <span class="rg-icons" nz-icon nzType="unordered-list"></span>
+        <span class="rg-yellow fw-semibold m-1">Lista de relatóros</span>
       </li>
     </ul>
   </nz-sider>
-  <nz-layout class="right-layout">
+  <nz-layout class="right-layout rg-default">
     <nz-header></nz-header>
-    <nz-content>
-      <ng-content></ng-content>
-      <div class="inner-content">
+
+    <div class="txt-title">
+      <h1 class="rg-brown">Últimos relatórios</h1>
+    </div>
+    <nz-content class="rg-default">
+
+      <div class="inner-content rg-default">
         <app-dashboard-card [title]="'teste'" ></app-dashboard-card>
       </div>
+      <ng-content></ng-content>
     </nz-content>
-    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
   </nz-layout>
 </nz-layout>
