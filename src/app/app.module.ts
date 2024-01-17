@@ -70,6 +70,7 @@ registerLocaleData(en);
     DashboardCardComponent,
     GenericPageLayoutContainerComponent,
     DynamicCardInputsComponent,
+    DynamicContainerComponent,
   ],
   imports: [
     BrowserModule,

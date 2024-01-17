@@ -89,9 +89,6 @@ export class DynamicContainerComponent implements AfterViewInit {
       } else if (componentToLoad === DynamicDropdownComponent) {
         console.log("DynamicContainerComponent: loadComponent - Carregando opções para Dropdown");
         this.loadOptionsForDropdown();
-      } else if (componentToLoad === DynamicCardInputsComponent) {
-        console.log("DynamicContainerComponent: loadComponent - Alterando título do Card");
-        this.loadOptionsForCardInput();
       }
     } else {
       console.error("DynamicContainerComponent: loadComponent - Nenhum componente mapeado para o tipo:", this.componentType);
@@ -133,22 +130,4 @@ export class DynamicContainerComponent implements AfterViewInit {
     }
   }
 
-  private loadOptionsForCardInput() {
-    this.componentsDataService.getData().subscribe(components => {
-      const cardComponent = components.find(c => c.tipoComponente === 'inputCard');
-      if (cardComponent && cardComponent.options) {
-        this.setOptionsForCardInput(cardComponent.options);
-      }
-    });
-  }
-  private setOptionsForCardInput(options: any[]) {
-    if (this.componentRef && this.componentRef.instance instanceof DynamicCardInputsComponent) {
-      const cardTitleOption = options.find(option => option.cardTitle);
-      if (cardTitleOption) {
-        this.componentRef.instance.cardTitle = cardTitleOption.cardTitle;
-      }
-    }
-  }
-
-  // Outros métodos necessários...
 }

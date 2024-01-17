@@ -43,11 +43,19 @@
   {
     "nome": "card",
     "tipoComponente": "inputCard",
-    "options": [
-      {
-        "cardTitle": "Título do nosso Card"
-      }
-    ]
+    "options": {
+      "cardTitle": "Título do Card",
+      "innerComponents": [
+        {
+          "componentType": "input",
+          "data": "Dados do Input"
+        },
+        {
+          "componentType": "number",
+          "data": "Dados do Input Numérico"
+        }
+      ]
+    }
   }
 ]
 
