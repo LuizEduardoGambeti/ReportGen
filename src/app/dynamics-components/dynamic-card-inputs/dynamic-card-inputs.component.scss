@@ -1,5 +1,9 @@
-.card {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 10px;
+.dynamic-container {
+  display: flex;
+  flex-wrap: wrap; /* Para que os itens passem para a linha seguinte se não couberem */
+  gap: 10px; /* Espaçamento entre os componentes */
+}
+
+.nz-card-grid {
+  width: 100%; /* Assegura que o card se expanda para o máximo do contêiner */
 }

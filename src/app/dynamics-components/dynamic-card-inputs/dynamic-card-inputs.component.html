@@ -1,8 +1,7 @@
-<!-- dynamic-card-inputs.component.html -->
-<nz-card>
-  <div nz-card-grid>
+<nz-card >
+  <div class="d-flex" nz-card-grid>
     <p>Dynamic Inputs</p>
-    <div *ngFor="let config of innerComponentConfigs">
+    <div class="dynamic-container" *ngFor="let config of innerComponentConfigs">
       <app-dynamic-container [componentType]="config.componentType" [value]="config.data"></app-dynamic-container>
     </div>
   </div>
