@@ -8,7 +8,7 @@ export class DynamicDropdownComponent implements OnInit {
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() allowClear: boolean = false;
-  @Input() options: { value: string, label: string }[] = [];
+  @Input() options: { value: string, label: string, title: string }[] = [];
   @Input() value: string = 'selecionar';
   @Output() onValueChange = new EventEmitter<string>();
 

@@ -6,10 +6,9 @@ import {log} from "ng-zorro-antd/core/logger";
   templateUrl: './dynamic-date-picker.component.html'
 })
 export class DynamicDatePickerComponent {
+  @Input() options: { placeholder: string, title: string }[] = [];
   @Input() value: Date = new Date();
   @Output() onValueChange: EventEmitter<Date> = new EventEmitter<Date>();
-  constructor() {
-  }
   public handleInputChange(newValue: Date) {
     this.onValueChange.emit(newValue);
   }

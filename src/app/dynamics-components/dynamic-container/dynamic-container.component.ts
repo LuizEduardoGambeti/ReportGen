@@ -90,6 +90,15 @@ export class DynamicContainerComponent implements AfterViewInit {
         console.log("DynamicContainerComponent: loadComponent - Carregando opções para Dropdown");
         this.loadOptionsForDropdown();
       }
+      else if (componentToLoad === DynamicInputComponent){
+        this.loadOptionsForInput();
+      }
+      else if (componentToLoad === DynamicInputNumberComponent){
+        this.loadOptionsForInputNumber();
+      }
+      else if (componentToLoad === DynamicDatePickerComponent){
+        this.loadOptionsForDatePicker();
+      }
     } else {
       console.error("DynamicContainerComponent: loadComponent - Nenhum componente mapeado para o tipo:", this.componentType);
     }
@@ -129,5 +138,47 @@ export class DynamicContainerComponent implements AfterViewInit {
       console.log("DynamicContainerComponent: setOptionsForDropdown - Opções definidas para Dropdown");
     }
   }
+  private loadOptionsForInput() {
+    this.componentsDataService.getData().subscribe(components => {
+      const inputComponent = components.find(c => c.tipoComponente === 'input');
+      if (inputComponent && inputComponent.options) {
+        this.setOptionsForInput(inputComponent.options);
+      }
+    });
+  }
 
+  private setOptionsForInput(options: any[]) {
+    if (this.componentRef && this.componentRef.instance instanceof DynamicInputComponent) {
+      this.componentRef.instance.options = options;
+
+    }
+  }
+  private loadOptionsForInputNumber() {
+    this.componentsDataService.getData().subscribe(components => {
+      const inputComponent = components.find(c => c.tipoComponente === 'number');
+      if (inputComponent && inputComponent.options) {
+        this.setOptionsForInputNumber(inputComponent.options);
+      }
+    });
+  }
+
+  private setOptionsForInputNumber(options: any[]) {
+    if (this.componentRef && this.componentRef.instance instanceof DynamicInputNumberComponent) {
+      this.componentRef.instance.options = options;
+    }
+  }
+  private loadOptionsForDatePicker() {
+    this.componentsDataService.getData().subscribe(components => {
+      const inputComponent = components.find(c => c.tipoComponente === 'datePicker');
+      if (inputComponent && inputComponent.options) {
+        this.setOptionsForDatePicker(inputComponent.options);
+      }
+    });
+  }
+
+  private setOptionsForDatePicker(options: any[]) {
+    if (this.componentRef && this.componentRef.instance instanceof DynamicDatePickerComponent) {
+      this.componentRef.instance.options = options;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 // dynamic-card-inputs.component.ts
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ComponentsDataService } from "../dynamic-data/components-data.service";
 
 @Component({
@@ -9,7 +9,7 @@ import { ComponentsDataService } from "../dynamic-data/components-data.service";
 })
 export class DynamicCardInputsComponent implements OnInit {
   public innerComponentConfigs: any[] = []; // Array para armazenar as configurações dos componentes internos
-
+  @Input() options: {title: string, label: string }[] = [];
   constructor(private componentDataService: ComponentsDataService) {}
 
   ngOnInit(): void {

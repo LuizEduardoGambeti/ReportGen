@@ -1,3 +1,10 @@
-<nz-select class="ml-2 mr-2" [nzPlaceHolder]="'Selecione uma opção'" [(ngModel)]="value" (ngModelChange)="handleInputChange($event)" [nzDisabled]="disabled" [nzLoading]="loading" [nzAllowClear]="allowClear">
-  <nz-option *ngFor="let option of options" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
-</nz-select>
+<div class="d-flex row">
+  <label *ngFor="let option of options" class="mb-1 p-1">{{option.title}}</label>
+  <nz-select class="p-0" [nzPlaceHolder]="'Selecione uma opção'" [(ngModel)]="value"
+             (ngModelChange)="handleInputChange($event)" [nzDisabled]="disabled" [nzLoading]="loading"
+             [nzAllowClear]="allowClear">
+    <div *ngFor="let option of options">
+      <nz-option [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
+    </div>
+  </nz-select>
+</div>

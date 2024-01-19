@@ -15,10 +15,10 @@
 
     <!-- Botão para adicionar item -->
     <div class="d-flex col-12 ml-5">
-      <button nz-button nzType="primary" (click)="showModal()" nzShape="round" nzBlock>Adicionar item</button>
+      <button class="border-0 mt-3 p-3 col-12 rounded-5 button-new fw-bold  rg-brown rg-background-yellow"  nz-icon nzType="plus-circle" (click)="showModal()" nzShape="round">Novo Item </button>
+
     </div>
 
-    <!-- Modal para seleção de componente -->
     <nz-modal [(nzVisible)]="isVisible" nzTitle="Selecionar Componente" (nzOnCancel)="handleCancel()"
               (nzOnOk)="handleOk()">
       <ng-container *nzModalContent>
