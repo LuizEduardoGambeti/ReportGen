@@ -1,0 +1,21 @@
+[
+  {
+    "tipoComponente": "inputCard",
+    "options": {
+      "title": "Título do Card",
+      "innerComponents": [
+        {
+          "nome": "input",
+          "tipoComponente": "input",
+          "options": [
+            {
+              "placeholder": "insira o teste",
+              "label": "teste de label"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+

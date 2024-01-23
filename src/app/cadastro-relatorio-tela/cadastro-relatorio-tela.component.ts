@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { v4 as uuidv4 } from 'uuid';
-import { PdfGeneratorService } from "./pdf-gen/pdf-generator.service";
+import {v4 as uuidv4} from 'uuid';
+import {PdfGeneratorService} from "./pdf-gen/pdf-generator.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { ComponentsDataService } from "../dynamics-components/dynamic-data/components-data.service";
+import {ComponentsDataService} from "../dynamics-components/dynamic-data/components-data.service";
 import {PdfPreviewService} from "./pdf-gen/pdf-preview.service";
+import {ComponentService} from "../services/component.service";
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -21,21 +22,30 @@ export class CadastroRelatorioTelaComponent implements OnInit {
   public data: { id: string, tipoComponente: string, data: string }[] = [];
   public componentsList: any[] = [];
   public dropdownOptions = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
+    {value: 'option1', label: 'Option 1'},
+    {value: 'option2', label: 'Option 2'},
   ];
-  constructor(private pdfService: PdfGeneratorService, private componentDataService: ComponentsDataService, private pdfPreviewService: PdfPreviewService) {
+
+  constructor(private pdfService: PdfGeneratorService,
+              private componentDataService: ComponentsDataService,
+              private pdfPreviewService: PdfPreviewService,
+              private componentService: ComponentService) {
   }
 
   public ngOnInit(): void {
+    this.componentService.getComponents().subscribe(response => {
+      console.log(response)
+      debugger
+    });
     this.componentDataService.getData().subscribe(response => {
       this.componentsList = response;
+      // this.componentsList = response;
     });
     this.previewContent = this.pdfPreviewService.getHtmlPreview();
   }
 
   public addComponent(componentType: string): void {
-    this.data.push({ id: uuidv4(), tipoComponente: componentType, data: '' });
+    this.data.push({id: uuidv4(), tipoComponente: componentType, data: ''});
     this.isVisible = false;
     this.updatePreview();
   }

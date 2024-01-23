@@ -23,26 +23,29 @@ export class PdfGeneratorService {
     return {
       content: [
         {
-          text: 'LAUDO TÉCNICO DAS INSTALAÇÕES ELÉTRICAS',
+          text: previewContent,
           style: 'header',
           alignment: 'center'
         },
         {
           columns: [
-            { text: '- LTIE -', style: 'subHeader', alignment: 'left' },
+            {text: '- LTIE -', style: 'subHeader', alignment: 'left'},
             [
-              { text: 'Nº : 159/22', style: 'subheader', alignment: 'right' },
-              { text: 'PAG : 77/82', style: 'subheader', alignment: 'right' },
-              { text: 'DATA : 25/08/2022', style: 'subheader', alignment: 'right' },
+              {text: 'Nº : 159/22', style: 'subheader', alignment: 'right'},
+              {text: 'PAG : 77/82', style: 'subheader', alignment: 'right'},
+              {text: 'DATA : 25/08/2022', style: 'subheader', alignment: 'right'},
             ]
           ],
         },
-        { text: 'SITUAÇÃO DA EMPRESA OBSERVADAS COM BASE NO TEXTO DA NR-10', style: 'subHeader', bold: true },
+        {text: 'SITUAÇÃO DA EMPRESA OBSERVADAS COM BASE NO TEXTO DA NR-10', style: 'subHeader', bold: true},
         {
           ol: [
             [
               'A empresa mantém esquemas unifilares atualizado das instalações elétricas com especificação do sistema de aterramento e demais equipamentos e dispositivos de proteção. (item 10.2.3)',
-              { text: 'Evidenciado: Não, a empresa possui diagrama unifilar, porém existe a necessidade atualizar, faltando a montagem do prontuário de acordo com a NR10.', style: 'bodyText' },
+              {
+                text: 'Evidenciado: Não, a empresa possui diagrama unifilar, porém existe a necessidade atualizar, faltando a montagem do prontuário de acordo com a NR10.',
+                style: 'bodyText'
+              },
             ],
             // Continue adicionando os outros itens como o exemplo acima
           ]
