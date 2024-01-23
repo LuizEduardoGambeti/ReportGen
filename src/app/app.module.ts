@@ -47,6 +47,7 @@ import { DashboardCardComponent } from './dynamics-components/dashboard-card/das
 import { GenericPageLayoutContainerComponent } from './generic-page-layout-container/generic-page-layout-container.component';
 import { DynamicCardInputsComponent } from './dynamics-components/dynamic-card-inputs/dynamic-card-inputs.component';
 import {NzTypographyModule} from "ng-zorro-antd/typography";
+import { DynamicTitleComponent } from './dynamics-components/dynamic-title/dynamic-title.component';
 
 registerLocaleData(en);
 
@@ -72,6 +73,7 @@ registerLocaleData(en);
     GenericPageLayoutContainerComponent,
     DynamicCardInputsComponent,
     DynamicContainerComponent,
+    DynamicTitleComponent,
   ],
   imports: [
     BrowserModule,

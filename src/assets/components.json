@@ -8,7 +8,6 @@
         "label": "teste de label"
       }
     ]
-
   },
   {
     "nome": "DatePicker",
@@ -58,6 +57,15 @@
       {
         "placeholder": "insira o teste",
         "title": "teste de label"
+      }
+    ]
+  },
+  {
+    "nome": "title",
+    "tipoComponente": "title",
+    "options": [
+      {
+        "label": "teste de label"
       }
     ]
   },
