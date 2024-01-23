@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+// dynamic-card-inputs.component.ts
+import {Component, Input, OnInit} from '@angular/core';
+import { ComponentsDataService } from "../dynamic-data/components-data.service";
 
 @Component({
   selector: 'app-dynamic-card-inputs',
@@ -6,17 +8,16 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./dynamic-card-inputs.component.scss']
 })
 export class DynamicCardInputsComponent implements OnInit {
-  @Input() cardTitle: string = 'Título Padrão';
-  @Input() cardIcon: string = 'algum-icon';
-  @Output() onValueChange = new EventEmitter<string>();
+  public innerComponentConfigs: any[] = []; // Array para armazenar as configurações dos componentes internos
+  @Input() options: {title: string, label: string }[] = [];
+  constructor(private componentDataService: ComponentsDataService) {}
 
   ngOnInit(): void {
-    // Inicializações podem ser feitas aqui
-  }
-
-  // Método para atualizar o título
-  public updateTitle(newTitle: string): void {
-    this.cardTitle = newTitle;
-    this.onValueChange.emit(this.cardTitle); // Emitir evento quando o título é atualizado
+    this.componentDataService.getData().subscribe(components => {
+      const cardComponent = components.find(c => c.tipoComponente === 'inputCard');
+      if (cardComponent && cardComponent.options && cardComponent.options.innerComponents) {
+        this.innerComponentConfigs = cardComponent.options.innerComponents;
+      }
+    });
   }
 }

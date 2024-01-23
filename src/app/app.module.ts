@@ -46,6 +46,8 @@ import {ComponentsDataService} from "./dynamics-components/dynamic-data/componen
 import { DashboardCardComponent } from './dynamics-components/dashboard-card/dashboard-card.component';
 import { GenericPageLayoutContainerComponent } from './generic-page-layout-container/generic-page-layout-container.component';
 import { DynamicCardInputsComponent } from './dynamics-components/dynamic-card-inputs/dynamic-card-inputs.component';
+import {NzTypographyModule} from "ng-zorro-antd/typography";
+import { DynamicTitleComponent } from './dynamics-components/dynamic-title/dynamic-title.component';
 
 registerLocaleData(en);
 
@@ -70,6 +72,8 @@ registerLocaleData(en);
     DashboardCardComponent,
     GenericPageLayoutContainerComponent,
     DynamicCardInputsComponent,
+    DynamicContainerComponent,
+    DynamicTitleComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,7 +97,8 @@ registerLocaleData(en);
     NzDatePickerModule,
     NzDropDownModule,
     NzSelectModule,
-    NzUploadModule
+    NzUploadModule,
+    NzTypographyModule
   ],
   providers: [ComponentsDataService,
     {provide: NZ_I18N, useValue: en_US}

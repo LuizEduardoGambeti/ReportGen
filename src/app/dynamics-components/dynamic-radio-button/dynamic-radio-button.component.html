@@ -1,3 +1,6 @@
-<nz-radio-group [(ngModel)]="value" (ngModelChange)="handleInputChange($event)">
-  <label nz-radio *ngFor="let option of options" [nzValue]="option.value">{{ option.label }}</label>
-</nz-radio-group>
+<div class="d-flex row">
+  <label *ngFor="let option of options" class="mb-1 p-0">{{option.title}}</label>
+  <nz-radio-group class="p-0" [(ngModel)]="value" (ngModelChange)="handleInputChange($event)">
+    <label nz-radio *ngFor="let option of options" [nzValue]="option.value">{{ option.label }}</label>
+  </nz-radio-group>
+</div>

@@ -1,17 +1,30 @@
 [
   {
     "nome": "input",
-    "tipoComponente": "input"
+    "tipoComponente": "input",
+    "options": [
+      {
+        "placeholder": "insira o teste",
+        "label": "teste de label"
+      }
+    ]
   },
   {
     "nome": "DatePicker",
-    "tipoComponente": "datePicker"
+    "tipoComponente": "datePicker",
+    "options": [
+      {
+        "placeholder": "Insira a data",
+        "title": "teste de label"
+      }
+    ]
   },
   {
     "nome": "RadioButton",
     "tipoComponente": "radioButton",
     "options": [
       {
+        "title": "teste",
         "value": "bababoi",
         "label": "asdasd"
       },
@@ -27,6 +40,7 @@
     "value": "teste",
     "options": [
       {
+        "title": "teste",
         "value": "valor1",
         "label": "Label 1"
       },
@@ -38,16 +52,39 @@
   },
   {
     "nome": "Number",
-    "tipoComponente": "number"
+    "tipoComponente": "number",
+    "options": [
+      {
+        "placeholder": "insira o teste",
+        "title": "teste de label"
+      }
+    ]
+  },
+  {
+    "nome": "title",
+    "tipoComponente": "title",
+    "options": [
+      {
+        "label": "teste de label"
+      }
+    ]
   },
   {
     "nome": "card",
     "tipoComponente": "inputCard",
-    "options": [
-      {
-        "cardTitle": "Título do nosso Card"
-      }
-    ]
+    "options": {
+      "title": "Título do Card",
+      "innerComponents": [
+        {
+          "componentType": "input",
+          "data": "Dados do Input"
+        },
+        {
+          "componentType": "number",
+          "data": "Dados do Input Numérico"
+        }
+      ]
+    }
   }
 ]
 

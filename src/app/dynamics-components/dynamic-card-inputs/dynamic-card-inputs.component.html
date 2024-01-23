@@ -1,8 +1,8 @@
-<nz-card>
-  <div nz-card-grid>
-    <div class="icons-list d-flex align-items-center">
-      <span nz-icon [nzType]="cardIcon" nzTheme="outline"></span>
-      <p class="m-0">{{ cardTitle }}</p>
+<nz-card class="rounded-3 ">
+  <div class="d-flex " >
+    <p>Dynamic Inputs</p>
+    <div class="dynamic-container" *ngFor="let config of innerComponentConfigs">
+      <app-dynamic-container [componentType]="config.componentType" [value]="config.data"></app-dynamic-container>
     </div>
   </div>
 </nz-card>

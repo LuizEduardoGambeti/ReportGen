@@ -1,1 +1,4 @@
-<nz-input-number [(ngModel)]="value" (ngModelChange)="handleInputChange($event)"></nz-input-number>
+<div class="d-flex row" *ngFor="let option of options">
+  <label class="mb-1 p-1">{{option.title}}</label>
+  <nz-input-number [nzPlaceHolder]="option.placeholder" class="ml-2 mr-2" [(ngModel)]="value" (ngModelChange)="handleInputChange($event)"></nz-input-number>
+</div>

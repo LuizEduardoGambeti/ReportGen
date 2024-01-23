@@ -1,3 +1,4 @@
-<nz-input-group>
-  <input  class="teste" [ngModel]="value" (ngModelChange)="handleInputChange($event)" />
+<nz-input-group class="d-flex row" *ngFor="let option of options" [title]="option.title">
+  <label class="mb-1 p-1">{{option.label}}</label>
+  <input class="rounded-3 border" [placeholder]="option.placeholder" [ngModel]="value" (ngModelChange)="handleInputChange($event)" />
 </nz-input-group>
