@@ -24,13 +24,19 @@
     <nz-header></nz-header>
 
     <div class="txt-title">
-      <h1 class="rg-brown">Últimos relatórios</h1>
+      <h2 class="rg-brown">Últimos relatórios</h2>
     </div>
     <nz-content class="rg-default">
 
-      <div class="inner-content rg-default">
+      <div class="inner-content  rg-platcard plataforma d-flex align-items-center justify-content-between">
+        <span class="button-car" nz-icon nzType="left" nzTheme="outline"></span>
         <app-dashboard-card [title]="'teste'" ></app-dashboard-card>
+        <app-dashboard-card [title]="'teste'" ></app-dashboard-card>
+        <app-dashboard-card [title]="'teste'" ></app-dashboard-card>
+
+        <span class="button-car " nz-icon nzType="right" nzTheme="outline"></span>
       </div>
+      <h2 class=" h2-relatorio p-5 rg-brown">Outros Relatórios</h2>
       <ng-content></ng-content>
     </nz-content>
   </nz-layout>
