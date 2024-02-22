@@ -2,13 +2,19 @@
   <div left-content>
     <app-dynamic-title></app-dynamic-title>
     <!-- Itera sobre os componentes dinâmicos -->
-    <div *ngFor="let item of data">
+    <div>
+      <!-- Loop correto para gerar os componentes dinâmicos -->
       <app-dynamic-container
+        *ngFor="let item of data"
+        [id]="item.id"
         [componentType]="item.tipoComponente"
         [value]="item.data"
-        (onValueChange)="onValueChange(item.id, $event)">
+        (onValueChange)="onValueChange($event)">
       </app-dynamic-container>
     </div>
+    <!-- Botão Salvar fora do loop -->
+    <button (click)="salvarEstado()">Salvar</button>
+
     <!-- Itera sobre os itens de colapso -->
     <app-collapse-cadastro-itens *ngFor="let item of items" [icon]="'double-right'" [title]="'teste'" [active]="true">
       <button nz-button class="mt-2" nzType="primary" (click)="deleteItem(item.id)">Deletar</button>
@@ -37,10 +43,11 @@
   <!-- Área de pré-visualização e botão de geração de PDF -->
   <div right-content>
     <div class="preview-area">
+      <button class="mb-4" (click)="generatePDF()">Gerar PDF</button>
+      <app-dynamic-pagination></app-dynamic-pagination>
       {{ previewContent }}
     </div>
     <div [innerHTML]="previewContent"></div>
-    <button (click)="generatePDF()">Gerar PDF</button>
   </div>
 
 

@@ -20,6 +20,8 @@ export class CadastroRelatorioTelaComponent implements OnInit {
   public previewContent: string = '';
   public data: { id: string, tipoComponente: string, data: string }[] = [];
   public componentsList: any[] = [];
+  public savedData: { id: string, tipoComponente: string, data: string }[] = [];
+
   public dropdownOptions = [
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
@@ -31,7 +33,6 @@ export class CadastroRelatorioTelaComponent implements OnInit {
     this.componentDataService.getData().subscribe(response => {
       this.componentsList = response;
     });
-    this.previewContent = this.pdfPreviewService.getHtmlPreview();
   }
 
   public addComponent(componentType: string): void {
@@ -40,13 +41,20 @@ export class CadastroRelatorioTelaComponent implements OnInit {
     this.updatePreview();
   }
 
-  public onValueChange(componentId: string, newValue: string): void {
-    const component = this.data.find(c => c.id === componentId);
-    if (component) {
-      component.data = newValue;
+  public onValueChange(event: { id: string, value: string }): void {
+    const componentIndex = this.data.findIndex(c => c.id === event.id);
+    if (componentIndex !== -1) {
+      this.data[componentIndex].data = event.value;
     }
     this.updatePreview();
   }
+  public salvarEstado(): void {
+    this.savedData = JSON.parse(JSON.stringify(this.data));
+    console.log("Estado salvo dos componentes:", this.savedData);
+  }
+
+
+
 
   public updatePreview(): void {
     this.previewContent = this.data.map(item => {

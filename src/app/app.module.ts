@@ -48,6 +48,8 @@ import { GenericPageLayoutContainerComponent } from './generic-page-layout-conta
 import { DynamicCardInputsComponent } from './dynamics-components/dynamic-card-inputs/dynamic-card-inputs.component';
 import {NzTypographyModule} from "ng-zorro-antd/typography";
 import { DynamicTitleComponent } from './dynamics-components/dynamic-title/dynamic-title.component';
+import { DynamicPaginationComponent } from './dynamics-components/dynamic-pagination/dynamic-pagination.component';
+import {NzPaginationModule} from "ng-zorro-antd/pagination";
 
 registerLocaleData(en);
 
@@ -74,6 +76,7 @@ registerLocaleData(en);
     DynamicCardInputsComponent,
     DynamicContainerComponent,
     DynamicTitleComponent,
+    DynamicPaginationComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,8 @@ registerLocaleData(en);
     NzDropDownModule,
     NzSelectModule,
     NzUploadModule,
-    NzTypographyModule
+    NzTypographyModule,
+    NzPaginationModule
   ],
   providers: [ComponentsDataService,
     {provide: NZ_I18N, useValue: en_US}

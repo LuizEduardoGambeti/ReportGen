@@ -29,7 +29,8 @@ export class DynamicContainerComponent implements AfterViewInit {
   @ViewChild(AnchorDirective, { static: false }) appAnchor!: AnchorDirective;
   @Input() componentType!: string;
   @Input() value: string = '';
-  @Output() onValueChange = new EventEmitter<string>();
+  @Output() onValueChange = new EventEmitter<{ id: string, value: string }>();
+  @Input() id!: string;
 
   private componentRef!: ComponentRef<any>;
 
@@ -47,9 +48,9 @@ export class DynamicContainerComponent implements AfterViewInit {
   }
 
   public handleValueChange(newValue: string) {
-    this.onValueChange.emit(newValue);
-    console.log("DynamicContainerComponent: handleValueChange - Novo valor emitido:", newValue);
+    this.onValueChange.emit({ id: this.id, value: newValue });
   }
+
 
   public loadComponent() {
     console.log("DynamicContainerComponent: loadComponent - Iniciando com tipo:", this.componentType);

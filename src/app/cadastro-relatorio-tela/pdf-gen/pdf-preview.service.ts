@@ -20,16 +20,16 @@ export class PdfPreviewService {
       } else if (item.hasOwnProperty('text')) {
         // Adiciona estilos inline baseados nos estilos do PDFMake
         const style = this.getStyle(item.style);
-        return `<p style="${style}">${item.text}</p>`;
+        return `<p>${item}</p>`;
       } else if (item.hasOwnProperty('ol')) {
         const listItems = item.ol.map((li: any) => {
           if (typeof li === 'string') {
             return `<li>${li}</li>`;
           } else if (li.hasOwnProperty('text')) {
             const style = this.getStyle(li.style);
-            return `<li style="${style}">${li.text}</li>`;
+            return `<p>${item}</p>`;
           }
-          return `<li>${li}</li>`;
+          return `<p>${item}</p>`;
         }).join('');
         return `<ol>${listItems}</ol>`;
       }
