@@ -48,6 +48,8 @@ import { GenericPageLayoutContainerComponent } from './generic-page-layout-conta
 import { DynamicCardInputsComponent } from './dynamics-components/dynamic-card-inputs/dynamic-card-inputs.component';
 import {NzTypographyModule} from "ng-zorro-antd/typography";
 import { DynamicTitleComponent } from './dynamics-components/dynamic-title/dynamic-title.component';
+import { DynamicTableComponent } from './dynamics-components/dynamic-table/dynamic-table.component';
+import {NzTableModule} from "ng-zorro-antd/table";
 
 registerLocaleData(en);
 
@@ -74,32 +76,34 @@ registerLocaleData(en);
     DynamicCardInputsComponent,
     DynamicContainerComponent,
     DynamicTitleComponent,
+    DynamicTableComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    NzButtonModule,
-    NzLayoutModule,
-    NzMenuModule,
-    NzBreadCrumbModule,
-    NzCollapseModule,
-    NzIconModule,
-    NzSpaceModule,
-    NzInputModule,
-    NzModalModule,
-    NzCardModule,
-    NzDividerModule,
-    NzRadioModule,
-    NzInputNumberModule,
-    NzDatePickerModule,
-    NzDropDownModule,
-    NzSelectModule,
-    NzUploadModule,
-    NzTypographyModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        NzButtonModule,
+        NzLayoutModule,
+        NzMenuModule,
+        NzBreadCrumbModule,
+        NzCollapseModule,
+        NzIconModule,
+        NzSpaceModule,
+        NzInputModule,
+        NzModalModule,
+        NzCardModule,
+        NzDividerModule,
+        NzRadioModule,
+        NzInputNumberModule,
+        NzDatePickerModule,
+        NzDropDownModule,
+        NzSelectModule,
+        NzUploadModule,
+        NzTypographyModule,
+        NzTableModule
+    ],
   providers: [ComponentsDataService,
     {provide: NZ_I18N, useValue: en_US}
   ],
